@@ -184,6 +184,7 @@ export function App() {
                 <FoodScatterPlot
                   foods={plotFoods}
                   selectedFoodId={selectedFoodId}
+                  selectedCategories={selectedCategories}
                   categoryColors={categoryColors}
                   goalLinePoints={points}
                   onSelectFood={setSelectedFoodId}
