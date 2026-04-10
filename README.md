@@ -4,7 +4,7 @@ An interactive nutrition visualization tool that maps foods by calories and prot
 
 ## Live Demo
 
-After GitHub Pages is enabled for GitHub Actions, the expected URL is:
+Live site:
 
 `https://pantelis-k.github.io/Ashby-Nutrition-Website/`
 
@@ -62,15 +62,19 @@ That keeps the UI stable if a future `ApiFoodRepository` replaces the static imp
 - All nutrition values are normalized to `per 100 g`
 - Runtime data lives in `public/data/foods.json`
 - Metadata lives in `public/data/metadata.json`
-- The sample dataset is curated to demonstrate all required UI features and category coverage
+- The current runtime dataset is a transformed USDA Foundation Foods snapshot with `323` foods
 - `npm run data:validate` validates the static dataset before build output is generated
 - `npm run data:import:foundation` replaces the runtime dataset with a USDA Foundation Foods snapshot
 
 ## Deployment Notes
 
-The project is configured for the GitHub repository `Ashby-Nutrition-Website`, so `vite.config.ts` uses:
+This repository is currently configured for deployment to:
 
 `base: '/Ashby-Nutrition-Website/'`
+
+That matches the current GitHub Pages URL for this repository.
+
+If you clone or fork this project and deploy it from a repository with a different name, update `vite.config.ts` so the `base` value matches your repository path.
 
 The workflow at `.github/workflows/deploy.yml`:
 
@@ -78,15 +82,6 @@ The workflow at `.github/workflows/deploy.yml`:
 - builds the Vite app
 - uploads `dist/` as the Pages artifact
 - deploys through `actions/deploy-pages`
-
-## GitHub Pages Checklist
-
-In the GitHub repository settings, confirm:
-
-1. `Settings -> Pages -> Build and deployment -> Source` is set to `GitHub Actions`
-2. The default branch is `main`
-3. Actions are enabled for the repository
-4. The first workflow run completes successfully after pushing
 
 ## Extending Later
 
@@ -102,7 +97,7 @@ To move from the static dataset to an API later:
 - Plotly scatter plot UI with search, category filters, goal line, summary stats, and food details
 - Static repository boundary in `src/data/repositories` keeps UI code decoupled from the backing data source
 - GitHub Pages deployment is configured through `.github/workflows/deploy.yml`
-- Current dataset size: `66` foods across all defined categories
+- Current dataset size: `323` foods from USDA Foundation Foods transformed into the app schema
 - Dataset metadata is surfaced in the footer at runtime
 
 ## Expanding The Dataset With USDA FoodData Central
@@ -133,3 +128,4 @@ Notes:
 - Imported entries are stored with `source.system: "usda-fdc"` and `source.sourceId` set to the USDA food ID
 - If USDA returns a value you want to adjust for consistency, add an `overrides` object for the affected nutrient fields
 - For bulk Foundation imports, you can optionally place `USDA_API_KEY=...` in a local `.env.local` file at the repo root; it is gitignored
+- Cloning this repository does not create a GitHub Pages site automatically; to publish your own copy, push it to your own repository, enable Pages with GitHub Actions, and update the Vite `base` path if your repository name differs
