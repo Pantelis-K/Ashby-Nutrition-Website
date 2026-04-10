@@ -176,7 +176,14 @@ input:focus {
   margin: 18px 0;
 }
 
+.category-filter-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
 .filter-chip,
+.secondary-button,
 .reset-button,
 .selected-food-badge,
 .status-pill {
@@ -203,6 +210,19 @@ input:focus {
 .filter-chip.is-active {
   border-color: rgba(20, 184, 166, 0.48);
   background: rgba(15, 118, 110, 0.22);
+}
+
+.secondary-button {
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  padding: 10px 14px;
+  background: rgba(15, 23, 42, 0.72);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.secondary-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .reset-button {

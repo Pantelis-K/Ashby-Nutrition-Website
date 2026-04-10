@@ -132,6 +132,11 @@ export function App() {
     });
   };
 
+  const handleClearCategories = () => {
+    setSelectedCategories(new Set());
+    setSelectedFoodId(null);
+  };
+
   const handleReset = () => {
     setSearchQuery('');
     setSelectedFoodId(null);
@@ -161,6 +166,7 @@ export function App() {
                 selectedCategories={selectedCategories}
                 counts={categoryCounts}
                 onToggle={handleToggleCategory}
+                onClearAll={handleClearCategories}
               />
               <ResetButton onReset={handleReset} />
             </Panel>
