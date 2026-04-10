@@ -1,0 +1,8 @@
+{
+  "datasetName": "Ashby Nutrition Curated Static Dataset",
+  "version": "1.0.0",
+  "buildDate": "2026-04-10",
+  "unitBasis": "per 100 g",
+  "foodCount": 66,
+  "notes": "Curated sample derived from public nutrition references and normalized for static visualization."
+}

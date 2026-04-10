@@ -1,0 +1,18 @@
+:root {
+  --bg: #061219;
+  --bg-elevated: rgba(8, 28, 36, 0.92);
+  --bg-soft: rgba(12, 38, 49, 0.8);
+  --border: rgba(148, 163, 184, 0.2);
+  --text: #e2e8f0;
+  --text-soft: #94a3b8;
+  --accent: #0f766e;
+  --accent-strong: #14b8a6;
+  --highlight: #f59e0b;
+  --danger: #f97316;
+  --shadow: 0 30px 80px rgba(1, 11, 16, 0.45);
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-sm: 14px;
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Manrope', 'Segoe UI', sans-serif;
+}
