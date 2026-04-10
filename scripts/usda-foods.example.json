@@ -1,0 +1,20 @@
+[
+  {
+    "fdcId": 171287,
+    "name": "Chicken Breast, Roasted, Skinless",
+    "category": "Meat",
+    "id": "chicken-breast-roasted-skinless",
+    "aliases": [
+      "roasted chicken breast"
+    ]
+  },
+  {
+    "fdcId": 173944,
+    "name": "Black Beans, Cooked",
+    "category": "Legumes",
+    "id": "black-beans-cooked",
+    "aliases": [
+      "cooked black beans"
+    ]
+  }
+]

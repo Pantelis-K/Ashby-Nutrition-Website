@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "build": "npm run data:validate && tsc -b && vite build",
+    "preview": "vite preview",
+    "data:validate": "node ./scripts/validate-foods.mjs",
+    "data:import:usda": "node ./scripts/import-usda-foods.mjs",
+    "data:import:foundation": "node ./scripts/import-usda-foundation.mjs"
   },
   "dependencies": {
     "plotly.js-basic-dist-min": "^3.0.1",

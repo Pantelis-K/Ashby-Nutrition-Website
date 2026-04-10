@@ -1,8 +1,9 @@
 {
-  "datasetName": "Ashby Nutrition Curated Static Dataset",
+  "datasetName": "Ashby Nutrition USDA Foundation Foods Dataset",
   "version": "1.0.0",
   "buildDate": "2026-04-10",
   "unitBasis": "per 100 g",
-  "foodCount": 66,
-  "notes": "Curated sample derived from public nutrition references and normalized for static visualization."
+  "foodCount": 323,
+  "notes": "Static USDA Foundation Foods snapshot transformed into the Ashby Nutrition website schema from 365 Foundation records.",
+  "sourceSystem": "usda-foundation"
 }

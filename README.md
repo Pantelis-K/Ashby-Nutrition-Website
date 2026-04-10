@@ -63,6 +63,8 @@ That keeps the UI stable if a future `ApiFoodRepository` replaces the static imp
 - Runtime data lives in `public/data/foods.json`
 - Metadata lives in `public/data/metadata.json`
 - The sample dataset is curated to demonstrate all required UI features and category coverage
+- `npm run data:validate` validates the static dataset before build output is generated
+- `npm run data:import:foundation` replaces the runtime dataset with a USDA Foundation Foods snapshot
 
 ## Deployment Notes
 
@@ -93,3 +95,41 @@ To move from the static dataset to an API later:
 1. Create an `ApiFoodRepository` implementing the same `FoodRepository` interface
 2. Swap the repository instance used by `useFoods`
 3. Keep domain logic and UI components unchanged
+
+## Current Repo State
+
+- React 19 + TypeScript + Vite single-page app
+- Plotly scatter plot UI with search, category filters, goal line, summary stats, and food details
+- Static repository boundary in `src/data/repositories` keeps UI code decoupled from the backing data source
+- GitHub Pages deployment is configured through `.github/workflows/deploy.yml`
+- Current dataset size: `66` foods across all defined categories
+- Dataset metadata is surfaced in the footer at runtime
+
+## Expanding The Dataset With USDA FoodData Central
+
+The project now includes a small maintenance workflow for curated USDA imports:
+
+- `scripts/import-usda-foods.mjs` fetches USDA FoodData Central records by `fdcId`, maps nutrients into the app schema, merges them into `public/data/foods.json`, and refreshes metadata
+- `scripts/import-usda-foundation.mjs` fetches the full USDA Foundation Foods catalog, maps it into the app schema, and replaces the runtime dataset
+- `scripts/validate-foods.mjs` checks dataset structure, category values, macro fields, plot coordinates, and metadata count
+- `npm run build` now runs dataset validation before the TypeScript and Vite build steps
+
+Recommended workflow:
+
+1. Create `scripts/usda-foods.json` using `scripts/usda-foods.example.json` as the starting shape
+2. Add curated entries with:
+   `fdcId`, `name`, `category`, optional `id`, optional `aliases`, and optional `overrides`
+3. Set your USDA API key in the shell:
+   PowerShell: `$env:USDA_API_KEY="your_key_here"`
+4. Run:
+   `npm run data:import:usda`
+5. Validate and build:
+   `npm run build`
+
+Notes:
+
+- Keeping `fdcId` in the manifest avoids ambiguous search matching
+- The manifest owns your site-facing names, categories, and aliases so USDA source data does not dictate UI copy
+- Imported entries are stored with `source.system: "usda-fdc"` and `source.sourceId` set to the USDA food ID
+- If USDA returns a value you want to adjust for consistency, add an `overrides` object for the affected nutrient fields
+- For bulk Foundation imports, you can optionally place `USDA_API_KEY=...` in a local `.env.local` file at the repo root; it is gitignored
