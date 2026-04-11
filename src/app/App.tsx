@@ -26,8 +26,8 @@ import { useGoalLine } from '../hooks/useGoalLine';
 import { useSelectedFood } from '../hooks/useSelectedFood';
 
 const DEFAULT_GOAL: UserGoal = {
-  proteinTarget: 160,
-  calorieTarget: 2200,
+  proteinTarget: 90,
+  calorieTarget: 2100,
 };
 
 const DEFAULT_GOAL_INPUTS = {
